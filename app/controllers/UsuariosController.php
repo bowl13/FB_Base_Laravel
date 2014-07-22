@@ -116,6 +116,7 @@ class UsuariosController extends \BaseController {
             #Si registra desde otro metodo
             #if($args) $this->request->data = $args['Usuarios'];
             $exists = $usuario->existsByFuid($args["fbuid"]);
+
             if($exists === null){
                 $usuario_id = $usuario->saveUsuario( $args );
                 if ( $usuario_id ) {
