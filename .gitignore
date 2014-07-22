@@ -1,0 +1,23 @@
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+.env.*.php
+.env.php
+.DS_Store
+_ide_helper.php
+
+# OS generated files #
+######################
+**/.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# SASS Cache #
+######################
+**/.sass-cache
