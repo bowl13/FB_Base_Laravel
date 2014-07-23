@@ -17,5 +17,6 @@ Route::get('/', function()
 });
 
 Route::get('usuarios/callback', 'UsuariosController@callback');
+Route::post('facebook/login', 'UsuariosController@loginFacebook');
 
 Route::resource('usuarios', 'UsuariosController');

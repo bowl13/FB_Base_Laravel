@@ -2,11 +2,6 @@
 
 class UsuariosController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
 		$fbSet = Config::get('app.fb');
@@ -27,7 +22,40 @@ class UsuariosController extends \BaseController {
         }
 	}
 
-	public function callback()
+	public function loginFacebook()
+    {
+        if ( Request::isMethod('post'))
+        {
+            #Obiene Access Token long-lived
+            $longLivedToken = $this->getAccessTokenLongLived( Input::get('access_token') );
+
+            $arrUserAdd =
+                array(
+                    "fbuid" => Input::get('id'),
+                    "firstname" => Input::get('first_name'),
+                    "lastname" => Input::get('last_name'),
+                    "email" => Input::get('email'),
+                    "genero" => Input::get('gender'),
+                    "ip" => Request::getClientIp(),
+                    "complete" => 0,
+                    "meta" => json_encode(array("link" => Input::get('link'), "locale" => Input::get('locale'), "name" => Input::get('name'), "timezone" => Input::get('timezone'), "updated_time" => Input::get('updated_time'), "username" => Input::get('username'))),
+                    "access_token" => $longLivedToken["access_token"],
+                    "expire_token" => $longLivedToken["expires"]
+                );
+            $response = $this->store($arrUserAdd);
+            if ($response !== null)
+            {
+                Session::put('idFb', Input::get('id'));
+                Session::put('access_token', $longLivedToken["access_token"]);
+                return Response::json($response);
+            }
+            else
+            {
+                return Response::json(array('state' => '999'));
+            }
+        }
+    }
+    public function callback()
 	{
 		if (Request::isMethod('get'))
 		{
@@ -83,7 +111,7 @@ class UsuariosController extends \BaseController {
             if ($response !== null)
             {
                 Session::put('idFb', $metaData->id);
-                Session::put('access_token', $metaData->access_token);
+                Session::put('access_token', $longLivedToken["access_token"]);
 //                return Redirect::to($fbSet['FB_APP']);
                 return Redirect::to('/');
             }
@@ -100,21 +128,15 @@ class UsuariosController extends \BaseController {
 
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store($args)
 	{
-		if ( Request::isMethod('post') || $args != null) 
+		if ( $args != null )
 		{
             $response = array();
 			#Crear instancia modelo usuario
 			$usuario = new Usuario;
 			
             #Si registra desde otro metodo
-            #if($args) $this->request->data = $args['Usuarios'];
             $exists = $usuario->existsByFuid($args["fbuid"]);
 
             if($exists === null){

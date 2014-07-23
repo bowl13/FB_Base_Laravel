@@ -23,7 +23,7 @@ server         = lr()
 
 # paths
 src            = "src"
-dest           = "../app/webroot"
+dest           = "../public/assets"
 
 #
 #	 tasks
