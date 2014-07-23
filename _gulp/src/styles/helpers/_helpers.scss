@@ -1,0 +1,42 @@
+.cf {
+	@extend .clearfix;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.btn {
+	border-radius: 4px;
+	transition: all .2s ease;
+}
+
+.btn-default {
+	background-color: $gray-light;
+	border: 0;
+	color: white;
+
+	&:hover {
+		background-color: $gray;
+		color: white;
+	}
+}
+
+// .btn-transparent {
+// 	@include btn-transparent();
+// }
+
+.table {
+	display: table;
+	height: inherit;
+	width: 100%;
+
+	> .row {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}

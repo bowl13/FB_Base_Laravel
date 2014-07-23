@@ -1,0 +1,34 @@
+.init {
+	body {
+		display: block;
+	}
+}
+
+.init-1 {
+	body {
+		opacity: 1;
+	}
+}
+
+// html, body {
+// 	height: 100%;
+// }
+
+body {
+	display: none;
+	opacity: 0;
+	@include transition(all .3s ease);
+	// @include responsive-report();
+}
+
+.bg {
+	background-image: url(../img/bg.jpg);
+	background-position: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+}

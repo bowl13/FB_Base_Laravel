@@ -1,0 +1,37 @@
+// @mixin btn-transparent($color: $brand-primary) {
+// 	// padding: 5px 10px;
+// 	border: 1px solid $color;
+// 	text-decoration: none;
+// 	transition: all .2s ease;
+// 	background-color: transparent;
+// 	letter-spacing: 1px;
+// 	text-transform: uppercase;
+// 	@include font-size(1.7);
+// 	color: $color;
+// 	outline: 0;
+//   outline: none;
+
+// 	&:hover {
+// 		border: 1px solid $color;
+// 		background-color: $color;
+// 	}
+
+// 	i {
+// 		vertical-align: 0px;
+// 	}
+// }
+
+.btn {
+	display: inline-block;
+	border-radius: 0px;
+	background-color: rgba(#000, .5);
+	color: #fff;
+	@include font-size(1.6);
+	text-transform: uppercase;
+	white-space: normal;
+	border: 0;
+
+	&:hover {
+		background-color: rgba(#000, .8);
+	}
+}

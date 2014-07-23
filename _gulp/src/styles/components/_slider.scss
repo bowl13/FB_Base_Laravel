@@ -1,0 +1,105 @@
+html.desktop {
+	.slider {
+		&:hover {
+			.slick-prev, .slick-next {
+				opacity: 1;
+			}
+		}
+
+		.slick-prev, .slick-next {
+			opacity: 0;
+		}
+	}
+}
+
+.slider {
+	background-color: #333;
+	height: 400px;
+	width: 100%;
+
+	.slick-prev, .slick-next {
+		z-index: 100;
+		opacity: 1;
+		display: block;
+	}
+
+	.slick-prev {
+		left: 10px;
+	}
+
+	.slick-next {
+		right: 10px;
+	}
+}
+
+// gallery
+.slider, .slick-lightbox {
+	min-height: 400px;
+
+	@include bp-medium() {
+		min-height: 660px;
+	}
+
+	@include bp-medium-2() {
+		min-height: 700px;
+	}
+
+	@include bp-xl() {
+		min-height: 740px;
+	}
+
+	&:hover {
+		.slick-prev, .slick-next {
+			opacity: 1;
+		}
+	}
+
+	.img {
+		width: 100%;
+		max-height: 1000px;
+		background-size: cover;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		min-height: 400px;
+
+		@include bp-medium() {
+			min-height: 660px;
+		}
+
+		@include bp-medium-2() {
+			min-height: 700px;
+		}
+
+		@include bp-xl() {
+			min-height: 740px;
+		}
+	}
+
+	.slick-prev {
+		margin-left: 20px;
+		position: absolute;
+		top: 50%;
+		background-color: rgba(#fff, .5);
+		width: 60px;
+		height: 60px;
+		opacity: 1;
+
+		&:before {
+			@include font-size(3);
+		}
+	}
+
+	.slick-next {
+		margin-right: 25px;
+		position: absolute;
+		top: 50%;
+		background-color: rgba(#fff, .5);
+		width: 60px;
+		height: 60px;
+		opacity: 1;
+
+		&:before {
+			@include font-size(3);
+		}
+	}
+}

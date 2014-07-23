@@ -1,0 +1,86 @@
+@font-face {
+	font-family: "iconfont";
+	src: url('..//fonts/iconfont/iconfont.eot');
+	src: url('..//fonts/iconfont/iconfont.eot?#iefix') format('eot'),
+		url('..//fonts/iconfont/iconfont.woff') format('woff'),
+		url('..//fonts/iconfont/iconfont.ttf') format('truetype'),
+		url('..//fonts/iconfont/iconfont.svg#iconfont') format('svg');
+}
+
+%icon {
+	font-family: "iconfont";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	display: inline-block;
+	line-height: 1;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+	vertical-align: middle;
+}
+
+@function icon-char($filename) {
+	$char: "";
+
+	@if $filename == facebook {
+		$char: "\E001";
+	}
+	@if $filename == flickr {
+		$char: "\E002";
+	}
+	@if $filename == instagram {
+		$char: "\E003";
+	}
+	@if $filename == menu {
+		$char: "\E004";
+	}
+	@if $filename == nube {
+		$char: "\E005";
+	}
+	@if $filename == pin {
+		$char: "\E006";
+	}
+	@if $filename == twitter {
+		$char: "\E007";
+	}
+	@if $filename == web {
+		$char: "\E008";
+	}
+
+	@return $char;
+}
+
+@mixin icon($filename, $insert: before) {
+	&:#{$insert} {
+		@extend %icon;
+		content: icon-char($filename);
+	}
+}
+
+.icon-facebook {
+	@include icon(facebook);
+}
+.icon-flickr {
+	@include icon(flickr);
+}
+.icon-instagram {
+	@include icon(instagram);
+}
+.icon-menu {
+	@include icon(menu);
+}
+.icon-nube {
+	@include icon(nube);
+}
+.icon-pin {
+	@include icon(pin);
+}
+.icon-twitter {
+	@include icon(twitter);
+}
+.icon-web {
+	@include icon(web);
+}

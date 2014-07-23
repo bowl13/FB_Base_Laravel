@@ -1,0 +1,19 @@
+@keyframes anim-bg {
+	0% {
+		background-image: url(../img/partials/fondos/1.jpg);
+	}
+
+	100% {
+		background-image: url(../img/partials/fondos/1-Blur.jpg);
+	}
+}
+
+@keyframes anim-index {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
