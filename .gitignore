@@ -22,3 +22,6 @@ Thumbs.db
 # SASS Cache #
 ######################
 **/.sass-cache
+
+node_modules
+bower_components
